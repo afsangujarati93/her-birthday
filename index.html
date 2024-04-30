@@ -3,73 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown Timer to 8 PM EST, April 30, 2024</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Happy Birthday Tazbin!</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+        .img-thumbnail {
+            max-width: 250px; /* Limit the maximum width */
+            height: auto;  /* Maintain the aspect ratio */
         }
-        .timer, .card {
-            width: 350px;
+        
+        #birthdayMessage span {
+            display: inline-block;
+            color: hsl(0, 70%, 50%);
+            transform: rotate(0deg);
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        #birthdayMessage span:hover {
+            transform: rotate(-10deg) scale(1.3);
+            color: hsl(60, 100%, 50%);
+        }
+        
+        /* Adding individual color and rotation to each letter */
+        #birthdayMessage span:nth-child(1) { color: #FF5733; transform: rotate(-5deg); }
+        #birthdayMessage span:nth-child(2) { color: #FFC300; transform: rotate(3deg); }
+        #birthdayMessage span:nth-child(3) { color: #DAF7A6; transform: rotate(-2deg); }
+        #birthdayMessage span:nth-child(4) { color: #FF5733; transform: rotate(5deg); }
+        #birthdayMessage span:nth-child(5) { color: #C70039; transform: rotate(-3deg); }
+        #birthdayMessage span:nth-child(6) { color: #900C3F; transform: rotate(4deg); }
+        #birthdayMessage span:nth-child(7) { color: #581845; transform: rotate(-4deg); }
+        #birthdayMessage span:nth-child(8) { color: #FFC300; transform: rotate(2deg); }
+        #birthdayMessage span:nth-child(9) { color: #FF5733; transform: rotate(-3deg); }
+        #birthdayMessage span:nth-child(10) { color: #C70039; transform: rotate(6deg); }
+        #birthdayMessage span:nth-child(11) { color: #DAF7A6; transform: rotate(-6deg); }
+        #birthdayMessage span:nth-child(12) { color: #900C3F; transform: rotate(3deg); }
+        #birthdayMessage span:nth-child(13) { color: #581845; transform: rotate(-2deg); }
+        #birthdayMessage span:nth-child(14) { color: #FFC300; transform: rotate(4deg); }
+        #birthdayMessage span:nth-child(15) { color: #FF5733; transform: rotate(-4deg); }
+        #birthdayMessage span:nth-child(16) { color: #C70039; transform: rotate(5deg); }
+        #birthdayMessage span:nth-child(17) { color: #900C3F; transform: rotate(-3deg); }
+        #birthdayMessage span:nth-child(18) { color: #581845; transform: rotate(2deg); }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1); /* Normal size */
+            }
+            50% {
+                transform: scale(1.1); /* 10% larger */
+            }
+        }
+
+        .timer {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
             padding: 20px;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            background-color: #fff;
+            border-radius: 10px;
+            animation: pulse 2s infinite ease-in-out; /* Applying the pulse animation */
         }
-        .card-img-top {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
+
+        .glow {
+            color: #fff; /* White text color */
+            text-shadow:
+                0 0 7px #0b0000, /* White glow */
+                0 0 10px #ff4da6, /* Pink glow */
+                0 0 21px #ff4da6, /* Intense pink glow */
+                0 0 42px #ff4da6; /* Subtle outermost pink glow */
         }
+
     </style>
 </head>
-<body>
-    <div id="content" class="timer">Loading...</div>
-
-    <script>
-        // Set the specific countdown date and time
-        var countDownDate = new Date("April 30, 2024 20:00:00 EST").getTime();
-
-        // Update the count down every 1 second
-        var x = setInterval(function() {
-
-            // Get today's date and time in UTC
-            var now = new Date().getTime();
-
-            // Find the distance between now and the count down date
-            var distance = countDownDate - now;
-
-            // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Display the result in the element with id="content"
-            document.getElementById("content").innerHTML = days + "d " + hours.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":"
-            + minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":" + seconds.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-
-            // If the count down is finished, show the winning message
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("content").innerHTML = `
-                <div class="card text-center">
-                    <img src="your_image_url_here.jpg" class="card-img-top" alt="Women's Wallet">
-                    <div class="card-body">
-                        <h5 class="card-title">Congratulations, You've Won!</h5>
-                        <p class="card-text">This beautiful wallet is yours. Please contact your husband to pick it up.</p>
-                        <a href="#" class="btn btn-primary">Claim Your Wallet</a>
+<body class="bg-white">
+    <div class="container text-center py-5">
+        <h1 class="display-4 mb-4" id="birthdayMessage">
+            <span>H</span><span>a</span><span>p</span><span>p</span><span>y</span>
+            <span>B</span><span>i</span><span>r</span><span>t</span><span>h</span><span>d</span><span>a</span><span>y</span>
+            <span>T</span><span>a</span><span>z</span><span>b</span><span>i</span><span>n</span>!
+        </h1>
+        
+        
+        <div class="text-center">
+            <div id="timer" class="timer h2 font-weight-bold mb-4 glow">Loading...</div>
+            <button id="revealButton" class="btn btn-primary" style="display: none;">Click to Reveal Your Gift</button>
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="giftModal" tabindex="-1" role="dialog" aria-labelledby="giftModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="giftModalLabel">Congratulations, You've Won!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="clutch2.jpg" alt="Women's Wallet" class="img-fluid rounded-circle mb-3">
+                        <h4>FREE!! FREE!! FREE!! FREE!!</h4>
+                        <button class="btn-lg btn-success" onclick="claimGift()">Claim It</button>
                     </div>
                 </div>
-                `;
-            }
-        }, 1000);
+            </div>
+        </div>
+
+        <!-- Birthday Messages -->
+        <div class="mt-5">
+            <div class="py-2 border mt-2">
+                <img src="maa.jpeg" alt="Friend" class="img-thumbnail">
+                <p class="mt-2"> Hello Tabu beta. Hello ... hello .... hello ... hello .... 🦻🏼</p>
+            </div>
+            <div class="py-2 border mt-2">
+                <img src="momdad.jpeg" alt="Friend" class="img-thumbnail">
+                <p class="mt-2"> Happy Birthday beta!</p>
+            </div>
+            <div class="py-2 border mt-2">
+                <img src="samad.jpeg" alt="Friend" class="img-thumbnail">
+                <p class="mt-2"> “Happy birthday! Did you know Jupiter is 30years told today🤣 <br/>
+                    Thanks for always looking out for me. <br/> 
+                    I appreciate you, you’re a great sister sometimes and annoying most of the times”</p>
+            </div>
+            <div class="py-2 border mt-2">
+                <img src="aris.jpeg" alt="Friend" class="img-thumbnail">
+                <p class="mt-2"> Happy Birthday Tazbin! Hope you have a fantastic day!</p>
+            </div>
+            <div class="py-2 border mt-2">
+                <img src="jenis.jpeg" alt="Friend" class="img-thumbnail">
+                <p class="mt-2"> It seems like not too long ago, the one who outwitted everyone <br/>
+                    to avoid eating but could never outwit her chachu, is now the one preparing new recipes and having us home for dinner. <br/>
+                    Didn’t realize how fast the time passed.</p>
+            </div>
+            <div class="py-2 border mt-2">
+                <img src="b.jpg" alt="Friend" class="img-thumbnail">
+                <p class="mt-2"> Happy birthday Tabu bacha. Bache kab kar rahe ho? </p>
+            </div>
+            <div class="py-2 border mt-2">
+                <img src="pari.jpg" alt="Friend" class="img-thumbnail">
+                <p class="mt-2"> Happy birthday Tabu beta. Hedo hawa time thai jyo. </p>
+            </div>
+            <div class="py-2 border mt-2">
+                <img src="sara.jpeg" alt="Friend" class="img-thumbnail">
+                <p class="mt-2"> Happy 30th Birthday Tazbin! <br/>
+                    Est 2005 to ♾️ <br/>
+                    Yaad hai REC se PCB ki coaching se DY se airport drop off se Canada and Houston ka safar :)
+                </p>
+            </div>
+            <div class="py-2 border mt-2">
+                <img src="zohan.jpeg" alt="Friend" class="img-thumbnail">
+                <p class="mt-2"> Wishing you a birthday filled with joy, laughter, and unforgettable moments! <br/>
+                    May this year bring you endless happiness and success. <br/>
+                    Cheers to another amazing trip around the sun ☀️ From Zohan & AzrAnis ♥️
+                </p>
+            </div>
+
+            <div class="py-2 border mt-2">
+                <img src="shifu.jpeg" alt="Friend" class="img-thumbnail">
+                <p class="mt-2"> Many many happy returns of the day Tabbuu💃 🎊🎈🎉… <br/>
+                    have a blessed and blast 💥 B’day and njoy the celebration 🥳 … <br/>
+                    from your Farzana Bun, Shifu & Jiju 😎 </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function setTimer(endTime) {
+            var x = setInterval(function() {
+                var now = new Date().getTime();
+                var distance = endTime - now;
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("timer").innerHTML = "<h2>You've won!!</h2>";
+                    document.getElementById("revealButton").style.display = '';
+                    return;
+                }
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                document.getElementById("timer").innerHTML = 
+                    (hours < 10 ? "0" + hours : hours) + ":" + 
+                    (minutes < 10 ? "0" + minutes : minutes) + ":" + 
+                    (seconds < 10 ? "0" + seconds : seconds);
+            }, 1000);
+        }
+
+        document.getElementById("revealButton").onclick = function() {
+            $('#giftModal').modal('show');
+        };
+
+        function claimGift() {
+            alert('Contact your husband to pick up the gift.');
+        }
+
+        // Set timer to end at 8 PM EST on April 30, 2024
+        var endTime = new Date('April 30, 2024 20:00:00 GMT-0400').getTime();
+        setTimer(endTime);
     </script>
 </body>
 </html>
-
