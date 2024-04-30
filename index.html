@@ -3,34 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You've Won!</title>
+    <title>Countdown Timer to 8 PM EST, April 30, 2024</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { 
-            display: flex; 
-            height: 100vh; 
-            align-items: center; 
-            justify-content: center; 
-            background-color: #f4f4f4; 
-            margin: 0; 
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
         }
-        .card {
-            width: 18rem;
+        .timer, .card {
+            width: 350px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
         .card-img-top {
             width: 100%;
-            height: 15vw;
+            height: auto;
             object-fit: cover;
         }
     </style>
 </head>
 <body>
-    <div class="card text-center">
-        <h2>NOT YET!!</h2>
-    </div>
+    <div id="content" class="timer">Loading...</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Set the specific countdown date and time
+        var countDownDate = new Date("April 30, 2024 20:00:00 EST").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+            // Get today's date and time in UTC
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="content"
+            document.getElementById("content").innerHTML = days + "d " + hours.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":"
+            + minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":" + seconds.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+
+            // If the count down is finished, show the winning message
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("content").innerHTML = `
+                <div class="card text-center">
+                    <img src="your_image_url_here.jpg" class="card-img-top" alt="Women's Wallet">
+                    <div class="card-body">
+                        <h5 class="card-title">Congratulations, You've Won!</h5>
+                        <p class="card-text">This beautiful wallet is yours. Please contact your husband to pick it up.</p>
+                        <a href="#" class="btn btn-primary">Claim Your Wallet</a>
+                    </div>
+                </div>
+                `;
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
+
